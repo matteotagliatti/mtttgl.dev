@@ -1,0 +1,21 @@
+<section aria-hidden="true">
+  <div
+    class="grid grid-cols-[auto_1fr_2fr_auto] gap-x-4 pb-2 text-muted text-xs"
+  >
+    <span>#</span>
+    <span>Project</span>
+    <span>Description</span>
+    <span class="text-right">Language</span>
+  </div>
+
+  {
+    [1, 2].map((index) => (
+      <div class="grid grid-cols-[auto_1fr_2fr_auto] gap-x-4 border-t border-foreground/10 py-2">
+        <span class="text-muted">{index}</span>
+        <span class="h-3 w-12 animate-pulse rounded bg-muted/30" />
+        <span class="h-3 w-full max-w-xs animate-pulse rounded bg-muted/30" />
+        <span class="ml-auto h-3 w-10 animate-pulse rounded bg-muted/30" />
+      </div>
+    ))
+  }
+</section>

@@ -15,4 +15,9 @@ export const CONFIG = {
     { text: "Instagram", href: "https://www.instagram.com/matteotagliatti/" },
     { text: "X", href: "https://x.com/matteotagliatti" },
   ],
+  LETTERBOXD: {
+    username: "mattetgl",
+    url: "https://letterboxd.com/mattetgl/",
+    limit: 9,
+  },
 };

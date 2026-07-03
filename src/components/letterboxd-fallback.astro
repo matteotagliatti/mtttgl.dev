@@ -1,0 +1,26 @@
+---
+import { CONFIG } from "../lib/consts";
+---
+
+<section
+  aria-hidden="true"
+  class="flex flex-col gap-4 rounded-lg bg-muted/15 p-4 sm:flex-row sm:items-center sm:justify-between"
+>
+  <div class="min-w-0">
+    <span class="font-medium">Letterboxd</span>
+    <p class="text-xs text-muted">Recently watched</p>
+  </div>
+
+  <div class="flex shrink-0 pl-1 sm:pl-3">
+    {
+      Array.from({ length: CONFIG.LETTERBOXD.limit }).map((_, index) => (
+        <span
+          class:list={[
+            "block h-[72px] w-12 shrink-0 rounded-sm bg-muted/30 ring-1 ring-foreground/10",
+            index > 0 && "-ml-3",
+          ]}
+        />
+      ))
+    }
+  </div>
+</section>

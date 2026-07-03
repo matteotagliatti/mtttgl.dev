@@ -1,6 +1,11 @@
 ---
+export const prerender = true;
+
 import Layout from "../layouts/Layout.astro";
-import Projects from "../components/projects.astro";
+import Github from "../components/github.astro";
+import GithubFallback from "../components/github-fallback.astro";
+import Letterboxd from "../components/letterboxd.astro";
+import LetterboxdFallback from "../components/letterboxd-fallback.astro";
 import { CONFIG } from "../lib/consts";
 ---
 
@@ -27,5 +32,10 @@ import { CONFIG } from "../lib/consts";
       }
     </p>
   </section>
-  <Projects />
+  <Github server:defer>
+    <GithubFallback slot="fallback" />
+  </Github>
+  <Letterboxd server:defer>
+    <LetterboxdFallback slot="fallback" />
+  </Letterboxd>
 </Layout>
