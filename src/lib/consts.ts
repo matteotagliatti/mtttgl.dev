@@ -4,6 +4,10 @@ export const CONFIG = {
     DESCRIPTION:
       "Hi, I'm Matteo. Full-stack developer with a passion for building web and native applications.",
   },
+  GITHUB: {
+    username: "matteotagliatti",
+    url: "https://github.com/matteotagliatti",
+  },
   PROJECT_URLS: [
     "https://github.com/matteotagliatti/bklst",
     "https://github.com/matteotagliatti/ui",

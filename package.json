@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "prebuild": "node scripts/generate-favicon.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "spotify:auth": "node --env-file=.env scripts/get-spotify-refresh-token.mjs"
