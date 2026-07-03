@@ -23,4 +23,7 @@ export const CONFIG = {
   HARDCOVER: {
     limit: 9,
   },
+  SPOTIFY: {
+    limit: 9,
+  },
 };
