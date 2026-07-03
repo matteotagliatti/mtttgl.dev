@@ -2,6 +2,7 @@
 import { CONFIG } from "../lib/consts";
 import { fetchDiaryEntries } from "../lib/letterboxd";
 import DvdCover from "./dvd-cover.astro";
+import LetterboxdLogo from "./logos/letterboxd-logo.astro";
 
 const entries = await fetchDiaryEntries(
   CONFIG.LETTERBOXD.username,
@@ -14,11 +15,14 @@ const posters = entries;
 <section
   class="flex flex-col gap-4 rounded-lg bg-card p-4 sm:flex-row sm:items-center sm:justify-between"
 >
-  <div class="min-w-0">
-    <a href={CONFIG.LETTERBOXD.url} target="_blank" rel="noopener noreferrer">
-      {CONFIG.LETTERBOXD.title}
-    </a>
-    <p class="text-xs text-muted">{CONFIG.LETTERBOXD.description}</p>
+  <div class="flex items-center justify-between gap-4 sm:block sm:min-w-0">
+    <div class="min-w-0">
+      <a href={CONFIG.LETTERBOXD.url} target="_blank" rel="noopener noreferrer">
+        {CONFIG.LETTERBOXD.title}
+      </a>
+      <p class="text-xs text-muted">{CONFIG.LETTERBOXD.description}</p>
+    </div>
+    <LetterboxdLogo class="h-4 w-auto shrink-0 sm:hidden" />
   </div>
 
   <div

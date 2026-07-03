@@ -1,0 +1,27 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "size-8" } = Astro.props;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 97.24 36"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Letterboxd"
+>
+  <ellipse cx="79.21" cy="18" rx="18.027" ry="18" fill="#40BCF4"></ellipse>
+  <ellipse cx="48.619" cy="18" rx="18.027" ry="18" fill="#00E054"></ellipse>
+  <ellipse cx="18.027" cy="18" rx="18.027" ry="18" fill="#FF8000"></ellipse>
+  <path
+    fill="#556677"
+    d="M33.323 27.531C31.592 24.767 30.591 21.5 30.591 18c0-3.5 1-6.767 2.731-9.531 1.731 2.764 2.731 6.031 2.731 9.531 0 3.5-1 6.767-2.731 9.531z"
+  ></path>
+  <path
+    fill="#556677"
+    d="M63.914 8.469c1.731 2.764 2.731 6.031 2.731 9.531 0 3.5-1 6.767-2.731 9.531-1.731-2.764-2.731-6.031-2.731-9.531 0-3.5 1-6.767 2.731-9.531z"
+  ></path>
+</svg>

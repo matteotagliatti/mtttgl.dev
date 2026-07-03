@@ -1,15 +1,19 @@
 ---
 import { CONFIG } from "../lib/consts";
 import BookCover from "./book-cover.astro";
+import HardcoverLogo from "./logos/hardcover-logo.astro";
 ---
 
 <section
   aria-hidden="true"
   class="flex flex-col gap-4 rounded-lg bg-card p-4 sm:flex-row sm:items-center sm:justify-between"
 >
-  <div class="min-w-0">
-    <span>{CONFIG.HARDCOVER.title}</span>
-    <p class="text-xs text-muted">{CONFIG.HARDCOVER.description}</p>
+  <div class="flex items-center justify-between gap-4 sm:block sm:min-w-0">
+    <div class="min-w-0">
+      <span>{CONFIG.HARDCOVER.title}</span>
+      <p class="text-xs text-muted">{CONFIG.HARDCOVER.description}</p>
+    </div>
+    <HardcoverLogo class="size-8 shrink-0 sm:hidden" />
   </div>
 
   <div

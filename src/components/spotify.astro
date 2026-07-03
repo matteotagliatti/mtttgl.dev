@@ -2,6 +2,7 @@
 import { CONFIG } from "../lib/consts";
 import { fetchTopTracks } from "../lib/spotify";
 import VinylCover from "./vinyl-cover.astro";
+import SpotifyLogo from "./logos/spotify-logo.astro";
 
 const { profileUrl, entries } = await fetchTopTracks(CONFIG.SPOTIFY.limit);
 ---
@@ -9,11 +10,14 @@ const { profileUrl, entries } = await fetchTopTracks(CONFIG.SPOTIFY.limit);
 <section
   class="flex flex-col gap-4 rounded-lg bg-card p-4 sm:flex-row sm:items-center sm:justify-between"
 >
-  <div class="min-w-0">
-    <a href={profileUrl} target="_blank" rel="noopener noreferrer">
-      {CONFIG.SPOTIFY.title}
-    </a>
-    <p class="text-xs text-muted">{CONFIG.SPOTIFY.description}</p>
+  <div class="flex items-center justify-between gap-4 sm:block sm:min-w-0">
+    <div class="min-w-0">
+      <a href={profileUrl} target="_blank" rel="noopener noreferrer">
+        {CONFIG.SPOTIFY.title}
+      </a>
+      <p class="text-xs text-muted">{CONFIG.SPOTIFY.description}</p>
+    </div>
+    <SpotifyLogo class="size-6 shrink-0 sm:hidden" />
   </div>
 
   <div
