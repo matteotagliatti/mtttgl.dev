@@ -1,5 +1,6 @@
 ---
 import { CONFIG } from "../lib/consts";
+import BookCover from "./book-cover.astro";
 ---
 
 <section
@@ -16,10 +17,12 @@ import { CONFIG } from "../lib/consts";
       Array.from({ length: CONFIG.HARDCOVER.limit }).map((_, index) => (
         <span
           class:list={[
-            "block h-[72px] w-12 shrink-0 rounded-sm bg-muted/30 ring-1 ring-foreground/10",
+            "block h-[72px] w-12 shrink-0",
             index > 0 && "-ml-3",
           ]}
-        />
+        >
+          <BookCover />
+        </span>
       ))
     }
   </div>

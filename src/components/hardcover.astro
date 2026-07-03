@@ -1,6 +1,7 @@
 ---
 import { CONFIG } from "../lib/consts";
 import { fetchRecentlyRead } from "../lib/hardcover";
+import BookCover from "./book-cover.astro";
 
 const { profileUrl, entries } = await fetchRecentlyRead(CONFIG.HARDCOVER.limit);
 ---
@@ -26,26 +27,13 @@ const { profileUrl, entries } = await fetchRecentlyRead(CONFIG.HARDCOVER.limit);
             target="_blank"
             rel="noopener noreferrer"
             class:list={[
-              "relative block h-[72px] w-12 shrink-0 overflow-hidden rounded-sm ring-1 ring-foreground/10 transition-transform duration-200 ease-out hover:-translate-y-1.5 hover:z-10",
+              "group/book relative block h-[72px] w-12 shrink-0 transition-transform duration-200 ease-out hover:-translate-y-1.5 hover:z-10",
               index > 0 && "-ml-3",
             ]}
             style={`z-index: ${entries.length - index}`}
             title={entry.title}
           >
-            {entry.coverUrl ? (
-              <img
-                src={entry.coverUrl}
-                alt={entry.title}
-                width={48}
-                height={72}
-                class="h-full w-full object-cover"
-                loading="lazy"
-              />
-            ) : (
-              <span class="flex h-full w-full items-center justify-center bg-muted/30 text-[10px] text-muted">
-                —
-              </span>
-            )}
+            <BookCover coverUrl={entry.coverUrl} title={entry.title} />
           </a>
         ))
       }
