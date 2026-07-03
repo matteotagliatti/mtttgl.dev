@@ -11,6 +11,10 @@ import HardcoverFallback from "../components/hardcover-fallback.astro";
 import Spotify from "../components/spotify.astro";
 import SpotifyFallback from "../components/spotify-fallback.astro";
 import { CONFIG } from "../lib/consts";
+
+function social(text: string) {
+  return CONFIG.SOCIAL_LINKS.find((link) => link.text === text)?.href ?? "#";
+}
 ---
 
 <Layout>
@@ -31,18 +35,25 @@ import { CONFIG } from "../lib/consts";
       <span class="font-medium">PHP</span> (Laravel). Simplicity and elegance are
       my guiding principles.
     </p>
-    <p class="text-xs text-muted">
-      {
-        CONFIG.SOCIAL_LINKS.map((link, index) => (
-          <>
-            {index > 0 && " • "}
-            <a target="_blank" rel="noopener noreferrer" href={link.href}>
-              {link.text}
-            </a>
-          </>
-        ))
-      }
-    </p>
+    <div class="text-muted text-xs space-y-1">
+      <p>
+        Feel free to{" "}
+        <a href={social("Email")}>email me</a>.
+      </p>
+      <p>
+        I'm also on{" "}
+        <a href={social("GitHub")} target="_blank" rel="noopener noreferrer"
+          >GitHub</a
+        >,{" "}
+        <a href={social("LinkedIn")} target="_blank" rel="noopener noreferrer"
+          >LinkedIn</a
+        >,{" "}
+        <a href={social("Instagram")} target="_blank" rel="noopener noreferrer"
+          >Instagram</a
+        >, and{" "}
+        <a href={social("X")} target="_blank" rel="noopener noreferrer">X</a>.
+      </p>
+    </div>
   </section>
   <Github server:defer>
     <GithubFallback slot="fallback" />
