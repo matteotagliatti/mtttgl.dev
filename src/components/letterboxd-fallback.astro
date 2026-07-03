@@ -8,22 +8,29 @@ import DvdCover from "./dvd-cover.astro";
   class="flex flex-col gap-4 rounded-lg bg-card p-4 sm:flex-row sm:items-center sm:justify-between"
 >
   <div class="min-w-0">
-    <span class="font-medium">{CONFIG.LETTERBOXD.title}</span>
+    <a href={CONFIG.LETTERBOXD.url} target="_blank" rel="noopener noreferrer">
+      {CONFIG.LETTERBOXD.title}
+    </a>
     <p class="text-xs text-muted">{CONFIG.LETTERBOXD.description}</p>
   </div>
 
-  <div class="flex shrink-0 pl-1 sm:pl-3">
-    {
-      Array.from({ length: CONFIG.LETTERBOXD.limit }).map((_, index) => (
-        <span
-          class:list={[
-            "block h-[72px] w-12 shrink-0",
-            index > 0 && "-ml-2",
-          ]}
-        >
-          <DvdCover />
-        </span>
-      ))
-    }
+  <div
+    class="w-full overflow-x-auto sm:w-auto sm:overflow-visible [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden"
+  >
+    <div class="flex w-max pl-1 sm:pl-3">
+      {
+        Array.from({ length: CONFIG.LETTERBOXD.limit }).map((_, index) => (
+          <span
+            class:list={[
+              "group/dvd relative block h-[72px] w-12 shrink-0 transition-transform duration-200 ease-out",
+              index > 0 && "-ml-2",
+            ]}
+            style={`z-index: ${CONFIG.LETTERBOXD.limit - index}`}
+          >
+            <DvdCover />
+          </span>
+        ))
+      }
+    </div>
   </div>
 </section>

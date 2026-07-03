@@ -8,22 +8,27 @@ import BookCover from "./book-cover.astro";
   class="flex flex-col gap-4 rounded-lg bg-card p-4 sm:flex-row sm:items-center sm:justify-between"
 >
   <div class="min-w-0">
-    <span class="font-medium">{CONFIG.HARDCOVER.title}</span>
+    <span>{CONFIG.HARDCOVER.title}</span>
     <p class="text-xs text-muted">{CONFIG.HARDCOVER.description}</p>
   </div>
 
-  <div class="flex shrink-0 pl-1 sm:pl-3">
-    {
-      Array.from({ length: CONFIG.HARDCOVER.limit }).map((_, index) => (
-        <span
-          class:list={[
-            "block h-[72px] w-12 shrink-0",
-            index > 0 && "-ml-2",
-          ]}
-        >
-          <BookCover />
-        </span>
-      ))
-    }
+  <div
+    class="w-full overflow-x-auto sm:w-auto sm:overflow-visible [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden"
+  >
+    <div class="flex w-max pl-1 sm:pl-3">
+      {
+        Array.from({ length: CONFIG.HARDCOVER.limit }).map((_, index) => (
+          <span
+            class:list={[
+              "group/book relative block h-[72px] w-12 shrink-0 transition-transform duration-200 ease-out",
+              index > 0 && "-ml-2",
+            ]}
+            style={`z-index: ${CONFIG.HARDCOVER.limit - index}`}
+          >
+            <BookCover />
+          </span>
+        ))
+      }
+    </div>
   </div>
 </section>
