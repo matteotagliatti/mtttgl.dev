@@ -28,7 +28,7 @@ const { profileUrl, entries } = await fetchRecentlyRead(CONFIG.HARDCOVER.limit);
             rel="noopener noreferrer"
             class:list={[
               "group/book relative block h-[72px] w-12 shrink-0 transition-transform duration-200 ease-out hover:-translate-y-1.5 hover:z-10",
-              index > 0 && "-ml-3",
+              index > 0 && "-ml-2",
             ]}
             style={`z-index: ${entries.length - index}`}
             title={entry.title}

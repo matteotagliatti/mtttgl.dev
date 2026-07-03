@@ -1,6 +1,7 @@
 ---
 import { CONFIG } from "../lib/consts";
 import { fetchDiaryEntries } from "../lib/letterboxd";
+import DvdCover from "./dvd-cover.astro";
 
 const entries = await fetchDiaryEntries(
   CONFIG.LETTERBOXD.username,
@@ -31,26 +32,13 @@ const posters = entries;
             target="_blank"
             rel="noopener noreferrer"
             class:list={[
-              "relative block h-[72px] w-12 shrink-0 overflow-hidden rounded-sm ring-1 ring-foreground/10 transition-transform duration-200 ease-out hover:-translate-y-1.5 hover:z-10",
-              index > 0 && "-ml-3",
+              "group/dvd relative block h-[72px] w-12 shrink-0 transition-transform duration-200 ease-out hover:-translate-y-1.5 hover:z-10",
+              index > 0 && "-ml-2",
             ]}
             style={`z-index: ${posters.length - index}`}
             title={entry.title}
           >
-            {entry.posterUrl ? (
-              <img
-                src={entry.posterUrl}
-                alt={entry.title}
-                width={48}
-                height={72}
-                class="h-full w-full object-cover"
-                loading="lazy"
-              />
-            ) : (
-              <span class="flex h-full w-full items-center justify-center bg-muted/30 text-[10px] text-muted">
-                —
-              </span>
-            )}
+            <DvdCover posterUrl={entry.posterUrl} title={entry.title} />
           </a>
         ))
       }
