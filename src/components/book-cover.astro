@@ -7,7 +7,7 @@ interface Props {
 const { coverUrl = null, title = "" } = Astro.props;
 ---
 
-<div class="relative h-[72px] w-12 perspective-[180px]">
+<div class="relative h-[84px] w-14 perspective-[180px]">
   <div
     class="relative h-full w-full transform-3d transform-[rotateY(-22deg)] transition-transform duration-200 ease-out group-hover/book:transform-[rotateY(-12deg)]"
   >
@@ -43,8 +43,8 @@ const { coverUrl = null, title = "" } = Astro.props;
           <img
             src={coverUrl}
             alt={title}
-            width={48}
-            height={72}
+            width={56}
+            height={84}
             class="h-full w-full object-cover"
             loading="lazy"
           />

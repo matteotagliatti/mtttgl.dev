@@ -24,7 +24,7 @@ import SpotifyLogo from "./logos/spotify-logo.astro";
         Array.from({ length: CONFIG.SPOTIFY.limit }).map((_, index) => (
           <span
             class:list={[
-              "group/vinyl relative block h-12 w-12 shrink-0 transition-transform duration-200 ease-out",
+              "group/vinyl relative block h-14 w-14 shrink-0 transition-transform duration-200 ease-out",
               index > 0 && "-ml-2",
             ]}
             style={`z-index: ${CONFIG.SPOTIFY.limit - index}`}

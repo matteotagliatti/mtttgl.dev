@@ -24,16 +24,16 @@ export const CONFIG = {
     description: "Movies diary",
     username: "mattetgl",
     url: "https://letterboxd.com/mattetgl/",
-    limit: 9,
+    limit: 8,
   },
   HARDCOVER: {
     title: "Hardcover",
     description: "Book shelf",
-    limit: 9,
+    limit: 8,
   },
   SPOTIFY: {
     title: "Spotify",
     description: "Top tracks",
-    limit: 9,
+    limit: 8,
   },
 };

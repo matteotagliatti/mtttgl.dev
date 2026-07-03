@@ -7,7 +7,7 @@ interface Props {
 const { posterUrl = null, title = "" } = Astro.props;
 ---
 
-<div class="relative h-[72px] w-12 perspective-[180px]">
+<div class="relative h-[84px] w-14 perspective-[180px]">
   <div
     class="relative h-full w-full transform-3d transform-[rotateY(-18deg)] transition-transform duration-200 ease-out group-hover/dvd:transform-[rotateY(-9deg)]"
   >
@@ -31,8 +31,8 @@ const { posterUrl = null, title = "" } = Astro.props;
           <img
             src={posterUrl}
             alt={title}
-            width={48}
-            height={72}
+            width={56}
+            height={84}
             class="h-full w-full object-cover"
             loading="lazy"
           />

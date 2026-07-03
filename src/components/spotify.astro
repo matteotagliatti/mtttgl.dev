@@ -31,7 +31,7 @@ const { profileUrl, entries } = await fetchTopTracks(CONFIG.SPOTIFY.limit);
             target="_blank"
             rel="noopener noreferrer"
             class:list={[
-              "group/vinyl relative block h-12 w-12 shrink-0 transition-transform duration-200 ease-out hover:-translate-y-1.5 hover:z-10",
+              "group/vinyl relative block h-14 w-14 shrink-0 transition-transform duration-200 ease-out hover:-translate-y-1.5 hover:z-10",
               index > 0 && "-ml-2",
             ]}
             style={`z-index: ${entries.length - index}`}

@@ -26,7 +26,7 @@ import LetterboxdLogo from "./logos/letterboxd-logo.astro";
         Array.from({ length: CONFIG.LETTERBOXD.limit }).map((_, index) => (
           <span
             class:list={[
-              "group/dvd relative block h-[72px] w-12 shrink-0 transition-transform duration-200 ease-out",
+              "group/dvd relative block h-[84px] w-14 shrink-0 transition-transform duration-200 ease-out",
               index > 0 && "-ml-2",
             ]}
             style={`z-index: ${CONFIG.LETTERBOXD.limit - index}`}

@@ -7,14 +7,14 @@ interface Props {
 const { albumArtUrl = null, title = "" } = Astro.props;
 ---
 
-<div class="relative h-12 w-12">
+<div class="relative h-14 w-14">
   <div
-    class="absolute -right-3 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-[repeating-radial-gradient(circle,oklch(0.12_0_0)_0_3px,oklch(0.18_0_0)_3px_4px)] shadow-[2px_2px_4px_oklch(0_0_0/0.22)] transition-transform duration-200 ease-out group-hover/vinyl:translate-x-1"
+    class="absolute -right-3.5 top-1/2 h-12 w-12 -translate-y-1/2 rounded-full bg-[repeating-radial-gradient(circle,oklch(0.12_0_0)_0_3px,oklch(0.18_0_0)_3px_4px)] shadow-[2px_2px_4px_oklch(0_0_0/0.22)] transition-transform duration-200 ease-out group-hover/vinyl:translate-x-1"
     aria-hidden="true"
   >
-    <div class="absolute inset-[13px] rounded-full bg-[oklch(0.88_0.01_86)]">
+    <div class="absolute inset-[15px] rounded-full bg-[oklch(0.88_0.01_86)]">
     </div>
-    <div class="absolute inset-[18px] rounded-full bg-[oklch(0.14_0_0)]">
+    <div class="absolute inset-[21px] rounded-full bg-[oklch(0.14_0_0)]">
     </div>
   </div>
 
@@ -26,8 +26,8 @@ const { albumArtUrl = null, title = "" } = Astro.props;
         <img
           src={albumArtUrl}
           alt={title}
-          width={48}
-          height={48}
+          width={56}
+          height={56}
           class="h-full w-full object-cover"
           loading="lazy"
         />
