@@ -1,0 +1,31 @@
+---
+import { CONFIG } from "../lib/consts";
+import { fetchGitHubRepo } from "../lib/github";
+
+const projects = await Promise.all(CONFIG.PROJECT_URLS.map(fetchGitHubRepo));
+---
+
+<section>
+  <div
+    class="grid grid-cols-[auto_1fr_2fr_auto] gap-x-4 pb-2 text-muted text-xs"
+    aria-hidden="true"
+  >
+    <span>#</span>
+    <span>Project</span>
+    <span>Description</span>
+    <span class="text-right">Language</span>
+  </div>
+
+  {
+    projects.map((project, index) => (
+      <div class="grid grid-cols-[auto_1fr_2fr_auto] gap-x-4 border-t border-foreground/10 py-2">
+        <span class="text-muted">{index + 1}</span>
+        <a href={project.html_url} target="_blank" rel="noopener noreferrer">
+          {project.name}
+        </a>
+        <span class="text-xs">{project.description ?? "—"}</span>
+        <span class="text-right text-xs">{project.language ?? "—"}</span>
+      </div>
+    ))
+  }
+</section>

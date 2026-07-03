@@ -1,23 +1,32 @@
+---
+import "../styles/global.css";
+import { CONFIG } from "../lib/consts";
+import { Font } from "astro:assets";
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{CONFIG.SITE_TITLE}</title>
+    <Font cssVariable="--font-geist-sans" preload />
+  </head>
+  <body
+    class="font-sans antialiased text-foreground max-w-xl mx-auto px-4 py-8 text-sm space-y-8"
+  >
+    <main class="space-y-12">
+      <slot />
+    </main>
+    <footer class="text-xs text-muted">
+      <p class="flex items-center gap-1">
+        <span>© {new Date().getFullYear()}</span>
+        <span>•</span>
+        <span>{CONFIG.SITE_TITLE}</span>
+      </p>
+    </footer>
+  </body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
