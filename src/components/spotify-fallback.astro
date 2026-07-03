@@ -1,5 +1,6 @@
 ---
 import { CONFIG } from "../lib/consts";
+import VinylCover from "./vinyl-cover.astro";
 ---
 
 <section
@@ -16,10 +17,12 @@ import { CONFIG } from "../lib/consts";
       Array.from({ length: CONFIG.SPOTIFY.limit }).map((_, index) => (
         <span
           class:list={[
-            "block h-12 w-12 shrink-0 rounded-sm bg-muted/30 ring-1 ring-foreground/10",
-            index > 0 && "-ml-3",
+            "block h-12 w-12 shrink-0",
+            index > 0 && "-ml-2",
           ]}
-        />
+        >
+          <VinylCover />
+        </span>
       ))
     }
   </div>
