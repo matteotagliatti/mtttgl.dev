@@ -1,23 +1,16 @@
 ---
 import { CONFIG } from "../lib/consts";
-import { fetchDiaryEntries } from "../lib/letterboxd";
+import { fetchRecentlyRead } from "../lib/hardcover";
 
-const entries = await fetchDiaryEntries(
-  CONFIG.LETTERBOXD.username,
-  CONFIG.LETTERBOXD.limit,
-);
-
-const posters = entries;
+const { profileUrl, entries } = await fetchRecentlyRead(CONFIG.HARDCOVER.limit);
 ---
 
 <section
   class="flex flex-col gap-4 rounded-lg bg-card p-4 sm:flex-row sm:items-center sm:justify-between"
 >
   <div class="min-w-0">
-    <a href={CONFIG.LETTERBOXD.url} target="_blank" rel="noopener noreferrer">
-      Movies
-    </a>
-    <p class="text-xs text-muted">Recently watched</p>
+    <a href={profileUrl} target="_blank" rel="noopener noreferrer"> Books </a>
+    <p class="text-xs text-muted">Recently read</p>
   </div>
 
   <div
@@ -25,7 +18,7 @@ const posters = entries;
   >
     <div class="flex w-max pl-1 sm:pl-3">
       {
-        posters.map((entry, index) => (
+        entries.map((entry, index) => (
           <a
             href={entry.link}
             target="_blank"
@@ -34,12 +27,12 @@ const posters = entries;
               "relative block h-[72px] w-12 shrink-0 overflow-hidden rounded-sm ring-1 ring-foreground/10 transition-transform duration-200 ease-out hover:-translate-y-1.5 hover:z-10",
               index > 0 && "-ml-3",
             ]}
-            style={`z-index: ${posters.length - index}`}
+            style={`z-index: ${entries.length - index}`}
             title={entry.title}
           >
-            {entry.posterUrl ? (
+            {entry.coverUrl ? (
               <img
-                src={entry.posterUrl}
+                src={entry.coverUrl}
                 alt={entry.title}
                 width={48}
                 height={72}

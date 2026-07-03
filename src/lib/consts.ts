@@ -20,4 +20,7 @@ export const CONFIG = {
     url: "https://letterboxd.com/mattetgl/",
     limit: 9,
   },
+  HARDCOVER: {
+    limit: 9,
+  },
 };
