@@ -9,8 +9,10 @@ const { profileUrl, entries } = await fetchRecentlyRead(CONFIG.HARDCOVER.limit);
   class="flex flex-col gap-4 rounded-lg bg-card p-4 sm:flex-row sm:items-center sm:justify-between"
 >
   <div class="min-w-0">
-    <a href={profileUrl} target="_blank" rel="noopener noreferrer"> Books </a>
-    <p class="text-xs text-muted">Recently read</p>
+    <a href={profileUrl} target="_blank" rel="noopener noreferrer">
+      {CONFIG.HARDCOVER.title}
+    </a>
+    <p class="text-xs text-muted">{CONFIG.HARDCOVER.description}</p>
   </div>
 
   <div

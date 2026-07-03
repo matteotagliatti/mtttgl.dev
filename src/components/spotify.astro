@@ -9,8 +9,10 @@ const { profileUrl, entries } = await fetchTopTracks(CONFIG.SPOTIFY.limit);
   class="flex flex-col gap-4 rounded-lg bg-card p-4 sm:flex-row sm:items-center sm:justify-between"
 >
   <div class="min-w-0">
-    <a href={profileUrl} target="_blank" rel="noopener noreferrer"> Spotify </a>
-    <p class="text-xs text-muted">Recently most played</p>
+    <a href={profileUrl} target="_blank" rel="noopener noreferrer">
+      {CONFIG.SPOTIFY.title}
+    </a>
+    <p class="text-xs text-muted">{CONFIG.SPOTIFY.description}</p>
   </div>
 
   <div

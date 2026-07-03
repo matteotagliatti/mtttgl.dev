@@ -16,14 +16,20 @@ export const CONFIG = {
     { text: "X", href: "https://x.com/matteotagliatti" },
   ],
   LETTERBOXD: {
+    title: "Letterboxd",
+    description: "Movies diary",
     username: "mattetgl",
     url: "https://letterboxd.com/mattetgl/",
     limit: 9,
   },
   HARDCOVER: {
+    title: "Hardcover",
+    description: "Book shelf",
     limit: 9,
   },
   SPOTIFY: {
+    title: "Spotify",
+    description: "Top tracks",
     limit: 9,
   },
 };
