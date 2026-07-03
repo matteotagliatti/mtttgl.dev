@@ -15,7 +15,7 @@ const { profileUrl, entries } = await fetchTopTracks(CONFIG.SPOTIFY.limit);
       <a href={profileUrl} target="_blank" rel="noopener noreferrer">
         {CONFIG.SPOTIFY.title}
       </a>
-      <p class="text-xs text-muted">{CONFIG.SPOTIFY.description}</p>
+      <p class="text-sm sm:text-xs text-muted">{CONFIG.SPOTIFY.description}</p>
     </div>
     <SpotifyLogo class="size-6 shrink-0 sm:hidden" />
   </div>

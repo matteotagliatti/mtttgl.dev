@@ -1,13 +1,13 @@
 ---
 import { CONFIG } from "../lib/consts";
-import { fetchGitHubRepo } from "../lib/github";
+import { fetchPinnedRepos } from "../lib/github";
 
-const projects = await Promise.all(CONFIG.PROJECT_URLS.map(fetchGitHubRepo));
+const projects = await fetchPinnedRepos(CONFIG.GITHUB.username);
 ---
 
 <section>
   <div
-    class="grid grid-cols-[auto_1fr_2fr_1fr] gap-x-4 pb-2 text-muted text-xs"
+    class="grid grid-cols-[auto_1fr_2fr_1fr] gap-x-4 pb-2 text-muted text-sm sm:text-xs"
     aria-hidden="true"
   >
     <span>#</span>
@@ -23,8 +23,10 @@ const projects = await Promise.all(CONFIG.PROJECT_URLS.map(fetchGitHubRepo));
         <a href={project.html_url} target="_blank" rel="noopener noreferrer">
           {project.name}
         </a>
-        <span class="text-xs leading-5">{project.description ?? "—"}</span>
-        <span class="text-right text-xs leading-5 ">
+        <span class="text-sm sm:text-xs leading-5">
+          {project.description ?? "—"}
+        </span>
+        <span class="text-right text-sm sm:text-xs leading-5 ">
           {project.language ?? "—"}
         </span>
       </div>

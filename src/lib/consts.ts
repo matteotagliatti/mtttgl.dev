@@ -6,12 +6,8 @@ export const CONFIG = {
   },
   GITHUB: {
     username: "matteotagliatti",
-    url: "https://github.com/matteotagliatti",
+    pinnedLimit: 4,
   },
-  PROJECT_URLS: [
-    "https://github.com/matteotagliatti/bklst",
-    "https://github.com/matteotagliatti/ui",
-  ],
   SOCIAL_LINKS: [
     { text: "Email", href: "mailto:matteotagliatti@gmail.com" },
     { text: "GitHub", href: "https://github.com/matteotagliatti" },

@@ -15,7 +15,9 @@ const { profileUrl, entries } = await fetchRecentlyRead(CONFIG.HARDCOVER.limit);
       <a href={profileUrl} target="_blank" rel="noopener noreferrer">
         {CONFIG.HARDCOVER.title}
       </a>
-      <p class="text-xs text-muted">{CONFIG.HARDCOVER.description}</p>
+      <p class="text-sm sm:text-xs text-muted">
+        {CONFIG.HARDCOVER.description}
+      </p>
     </div>
     <HardcoverLogo class="size-8 shrink-0 sm:hidden" />
   </div>

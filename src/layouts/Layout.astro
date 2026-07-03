@@ -13,15 +13,16 @@ import { Font } from "astro:assets";
     <link rel="apple-touch-icon" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{CONFIG.SITE.TITLE}</title>
+    <meta name="description" content={CONFIG.SITE.DESCRIPTION} />
     <Font cssVariable="--font-geist-sans" preload />
   </head>
   <body
-    class="font-sans antialiased text-foreground max-w-xl mx-auto px-4 pb-4 pt-8 text-sm space-y-8"
+    class="font-sans antialiased text-foreground max-w-xl mx-auto px-4 pb-4 pt-8 space-y-8 text-base sm:text-sm"
   >
     <main class="space-y-12">
       <slot />
     </main>
-    <footer class="text-xs text-muted">
+    <footer class="text-sm sm:text-xs text-muted">
       <p class="flex items-center gap-1">
         <span>© {new Date().getFullYear()}</span>
         <span>•</span>

@@ -11,7 +11,9 @@ import HardcoverLogo from "./logos/hardcover-logo.astro";
   <div class="flex items-center justify-between gap-4 sm:block sm:min-w-0">
     <div class="min-w-0">
       <span>{CONFIG.HARDCOVER.title}</span>
-      <p class="text-xs text-muted">{CONFIG.HARDCOVER.description}</p>
+      <p class="text-sm sm:text-xs text-muted">
+        {CONFIG.HARDCOVER.description}
+      </p>
     </div>
     <HardcoverLogo class="size-8 shrink-0 sm:hidden" />
   </div>
