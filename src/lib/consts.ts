@@ -1,5 +1,9 @@
 export const CONFIG = {
-  SITE_TITLE: "Matteo Tagliatti",
+  SITE: {
+    TITLE: "Matteo Tagliatti",
+    DESCRIPTION:
+      "Hi, I'm Matteo. Full-stack developer with a passion for building web and native applications.",
+  },
   PROJECT_URLS: [
     "https://github.com/matteotagliatti/bklst",
     "https://github.com/matteotagliatti/ui",

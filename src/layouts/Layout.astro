@@ -12,7 +12,7 @@ import { Font } from "astro:assets";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>{CONFIG.SITE_TITLE}</title>
+    <title>{CONFIG.SITE.TITLE}</title>
     <Font cssVariable="--font-geist-sans" preload />
   </head>
   <body
@@ -25,7 +25,7 @@ import { Font } from "astro:assets";
       <p class="flex items-center gap-1">
         <span>© {new Date().getFullYear()}</span>
         <span>•</span>
-        <span>{CONFIG.SITE_TITLE}</span>
+        <span>{CONFIG.SITE.TITLE}</span>
       </p>
     </footer>
   </body>
