@@ -7,12 +7,36 @@ interface Props {
 const { coverUrl = null, title = "" } = Astro.props;
 ---
 
-<div class="relative h-[72px] w-12 perspective-[120px]">
+<div class="relative h-[72px] w-12 perspective-[180px]">
   <div
-    class="relative h-full w-full transform-3d transform-[rotateY(-16deg)] transition-transform duration-200 ease-out group-hover/book:transform-[rotateY(-8deg)]"
+    class="relative h-full w-full transform-3d transform-[rotateY(-22deg)] transition-transform duration-200 ease-out group-hover/book:transform-[rotateY(-12deg)]"
   >
     <div
-      class="absolute inset-0 overflow-hidden rounded-sm ring-1 ring-foreground/10 transform-[translateZ(0.5px)]"
+      class="absolute inset-y-0 right-[-6px] w-3 rounded-r-[3px] border-r border-foreground/10 bg-[repeating-linear-gradient(90deg,oklch(0.96_0.006_92)_0_2px,oklch(0.88_0.008_92)_2px_3px)] shadow-[2px_2px_3px_oklch(0_0_0/0.12)] transform-[translateZ(-5px)_rotateY(58deg)]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div
+      class="absolute bottom-px left-[-4px] top-px w-[7px] origin-right rounded-l-sm bg-[linear-gradient(90deg,oklch(0.16_0_0),oklch(0.32_0_0)_55%,oklch(0.18_0_0))] shadow-[-2px_1px_3px_oklch(0_0_0/0.22)] transform-[translateZ(-3px)_rotateY(-75deg)]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div
+      class="absolute inset-y-0 left-0 w-[5px] rounded-l-sm bg-[linear-gradient(90deg,oklch(0_0_0/0.38),transparent)] transform-[translateZ(1px)]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div
+      class="absolute bottom-0 left-[3px] right-[2px] h-[3px] rounded-b-sm bg-[repeating-linear-gradient(90deg,oklch(0.96_0.006_92)_0_3px,oklch(0.86_0.008_92)_3px_4px)] transform-[translateZ(1.5px)]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div
+      class="absolute inset-0 overflow-hidden rounded-sm ring-1 ring-foreground/10 shadow-[2px_3px_5px_oklch(0_0_0/0.2)] transform-[translateZ(2px)]"
     >
       {
         coverUrl ? (
@@ -25,8 +49,8 @@ const { coverUrl = null, title = "" } = Astro.props;
             loading="lazy"
           />
         ) : (
-          <span class="flex h-full w-full items-center justify-center bg-muted/30 text-[10px] text-muted">
-            —
+          <span class="flex h-full w-full items-center justify-center text-center bg-[#d9d9db] text-card text-[8px] line-clamp-3 leading-tight">
+            {title}
           </span>
         )
       }
