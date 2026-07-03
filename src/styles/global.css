@@ -5,6 +5,7 @@
   --color-foreground: oklch(0.2435 0 0);
   --color-muted: oklch(0.6895 0 0);
   --color-card: oklch(0.9677 0.0027 286.35);
+  --color-placeholder: oklch(0.8859 0.0027 286.34);
 }
 
 @layer base {
