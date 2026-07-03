@@ -23,8 +23,10 @@ const projects = await Promise.all(CONFIG.PROJECT_URLS.map(fetchGitHubRepo));
         <a href={project.html_url} target="_blank" rel="noopener noreferrer">
           {project.name}
         </a>
-        <span class="text-xs">{project.description ?? "—"}</span>
-        <span class="text-right text-xs">{project.language ?? "—"}</span>
+        <span class="text-xs leading-5">{project.description ?? "—"}</span>
+        <span class="text-right text-xs leading-5 ">
+          {project.language ?? "—"}
+        </span>
       </div>
     ))
   }
