@@ -21,9 +21,9 @@ const { profileUrl, entries } = await fetchTopTracks(CONFIG.SPOTIFY.limit);
   </div>
 
   <div
-    class="w-full -my-2 overflow-x-auto py-2 sm:my-0 sm:w-auto sm:overflow-visible sm:py-0 [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden"
+    class="-mx-4 w-[calc(100%+2rem)] -my-2 overflow-x-auto py-2 sm:mx-0 sm:my-0 sm:w-auto sm:overflow-visible sm:py-0 [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden"
   >
-    <div class="flex w-max pl-1 sm:pl-3">
+    <div class="flex w-max pl-5 sm:pl-3">
       {
         entries.map((entry, index) => (
           <a
