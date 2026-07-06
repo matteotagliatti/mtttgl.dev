@@ -1,0 +1,27 @@
+---
+import { CONFIG } from "../lib/consts";
+import { fetchTopTracks } from "../lib/spotify";
+import VinylCover from "./vinyl-cover.astro";
+
+const { entries } = await fetchTopTracks(CONFIG.SPOTIFY.limit);
+---
+
+<div class="flex w-max pl-5 sm:pl-3">
+  {
+    entries.map((entry, index) => (
+      <a
+        href={entry.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class:list={[
+          "group/vinyl relative block h-14 w-14 shrink-0 transition-transform duration-200 ease-out hover:-translate-y-1.5 hover:z-10",
+          index > 0 && "-ml-2",
+        ]}
+        style={`z-index: ${entries.length - index}`}
+        title={`${entry.title} — ${entry.artist}`}
+      >
+        <VinylCover albumArtUrl={entry.albumArtUrl} title={entry.title} />
+      </a>
+    ))
+  }
+</div>

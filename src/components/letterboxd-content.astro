@@ -1,0 +1,30 @@
+---
+import { CONFIG } from "../lib/consts";
+import { fetchDiaryEntries } from "../lib/letterboxd";
+import DvdCover from "./dvd-cover.astro";
+
+const entries = await fetchDiaryEntries(
+  CONFIG.LETTERBOXD.username,
+  CONFIG.LETTERBOXD.limit,
+);
+---
+
+<div class="flex w-max pl-5 sm:pl-3">
+  {
+    entries.map((entry, index) => (
+      <a
+        href={entry.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class:list={[
+          "group/dvd relative block h-[84px] w-14 shrink-0 transition-transform duration-200 ease-out hover:-translate-y-1.5 hover:z-10",
+          index > 0 && "-ml-2",
+        ]}
+        style={`z-index: ${entries.length - index}`}
+        title={entry.title}
+      >
+        <DvdCover posterUrl={entry.posterUrl} title={entry.title} />
+      </a>
+    ))
+  }
+</div>

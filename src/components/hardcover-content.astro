@@ -1,0 +1,27 @@
+---
+import { CONFIG } from "../lib/consts";
+import { fetchRecentlyRead } from "../lib/hardcover";
+import BookCover from "./book-cover.astro";
+
+const { entries } = await fetchRecentlyRead(CONFIG.HARDCOVER.limit);
+---
+
+<div class="flex w-max pl-5 sm:pl-3">
+  {
+    entries.map((entry, index) => (
+      <a
+        href={entry.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class:list={[
+          "group/book relative block h-[84px] w-14 shrink-0 transition-transform duration-200 ease-out hover:-translate-y-1.5 hover:z-10",
+          index > 0 && "-ml-2",
+        ]}
+        style={`z-index: ${entries.length - index}`}
+        title={entry.title}
+      >
+        <BookCover coverUrl={entry.coverUrl} title={entry.title} />
+      </a>
+    ))
+  }
+</div>

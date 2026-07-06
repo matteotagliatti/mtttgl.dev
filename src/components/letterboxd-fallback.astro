@@ -1,42 +1,20 @@
 ---
 import { CONFIG } from "../lib/consts";
 import DvdCover from "./dvd-cover.astro";
-import LetterboxdLogo from "./logos/letterboxd-logo.astro";
 ---
 
-<section
-  aria-hidden="true"
-  class="flex flex-col gap-4 rounded-lg bg-card p-4 sm:flex-row sm:items-center sm:justify-between"
->
-  <div class="flex items-center justify-between gap-4 sm:block sm:min-w-0">
-    <div class="min-w-0">
-      <a href={CONFIG.LETTERBOXD.url} target="_blank" rel="noopener noreferrer">
-        {CONFIG.LETTERBOXD.title}
-      </a>
-      <p class="text-sm sm:text-xs text-muted">
-        {CONFIG.LETTERBOXD.description}
-      </p>
-    </div>
-    <LetterboxdLogo class="h-4 w-auto shrink-0 sm:hidden" />
-  </div>
-
-  <div
-    class="-mx-4 w-[calc(100%+2rem)] -my-2 overflow-x-auto py-2 sm:mx-0 sm:my-0 sm:w-auto sm:overflow-visible sm:py-0 [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden"
-  >
-    <div class="flex w-max pl-5 sm:pl-3">
-      {
-        Array.from({ length: CONFIG.LETTERBOXD.limit }).map((_, index) => (
-          <span
-            class:list={[
-              "group/dvd relative block h-[84px] w-14 shrink-0 transition-transform duration-200 ease-out",
-              index > 0 && "-ml-2",
-            ]}
-            style={`z-index: ${CONFIG.LETTERBOXD.limit - index}`}
-          >
-            <DvdCover />
-          </span>
-        ))
-      }
-    </div>
-  </div>
-</section>
+<div aria-hidden="true" class="flex w-max pl-5 sm:pl-3">
+  {
+    Array.from({ length: CONFIG.LETTERBOXD.limit }).map((_, index) => (
+      <span
+        class:list={[
+          "group/dvd relative block h-[84px] w-14 shrink-0 transition-transform duration-200 ease-out",
+          index > 0 && "-ml-2",
+        ]}
+        style={`z-index: ${CONFIG.LETTERBOXD.limit - index}`}
+      >
+        <DvdCover />
+      </span>
+    ))
+  }
+</div>

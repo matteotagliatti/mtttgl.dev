@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+}
+
+const { title, description, href } = Astro.props;
+---
+
+<section
+  class="flex flex-col gap-4 rounded-lg bg-card p-4 sm:flex-row sm:items-center sm:justify-between"
+>
+  <div class="flex items-center justify-between gap-4 sm:block sm:min-w-0">
+    <div class="min-w-0">
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        {title}
+      </a>
+      <p class="text-sm sm:text-xs text-muted">
+        {description}
+      </p>
+    </div>
+    <slot name="logo" />
+  </div>
+
+  <div
+    class="-mx-4 w-[calc(100%+2rem)] -my-2 overflow-x-auto py-2 sm:mx-0 sm:my-0 sm:w-auto sm:overflow-visible sm:py-0 [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden"
+  >
+    <slot />
+  </div>
+</section>

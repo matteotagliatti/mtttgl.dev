@@ -25,11 +25,13 @@ export const CONFIG = {
   HARDCOVER: {
     title: "Hardcover",
     description: "Book shelf",
+    url: "https://hardcover.app/@mattetgl",
     limit: 8,
   },
   SPOTIFY: {
     title: "Spotify",
     description: "Top tracks",
+    url: "https://open.spotify.com/user/mattetgl",
     limit: 8,
   },
 };

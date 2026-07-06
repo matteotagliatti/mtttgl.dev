@@ -4,12 +4,16 @@ export const prerender = true;
 import Layout from "../layouts/Layout.astro";
 import Github from "../components/github.astro";
 import GithubFallback from "../components/github-fallback.astro";
-import Letterboxd from "../components/letterboxd.astro";
+import FeedCard from "../components/feed-card.astro";
+import LetterboxdContent from "../components/letterboxd-content.astro";
 import LetterboxdFallback from "../components/letterboxd-fallback.astro";
-import Hardcover from "../components/hardcover.astro";
+import HardcoverContent from "../components/hardcover-content.astro";
 import HardcoverFallback from "../components/hardcover-fallback.astro";
-import Spotify from "../components/spotify.astro";
+import SpotifyContent from "../components/spotify-content.astro";
 import SpotifyFallback from "../components/spotify-fallback.astro";
+import LetterboxdLogo from "../components/logos/letterboxd-logo.astro";
+import HardcoverLogo from "../components/logos/hardcover-logo.astro";
+import SpotifyLogo from "../components/logos/spotify-logo.astro";
 import { CONFIG } from "../lib/consts";
 
 function social(text: string) {
@@ -59,14 +63,35 @@ function social(text: string) {
     <GithubFallback slot="fallback" />
   </Github>
   <div class="space-y-4">
-    <Letterboxd server:defer>
-      <LetterboxdFallback slot="fallback" />
-    </Letterboxd>
-    <Hardcover server:defer>
-      <HardcoverFallback slot="fallback" />
-    </Hardcover>
-    <Spotify server:defer>
-      <SpotifyFallback slot="fallback" />
-    </Spotify>
+    <FeedCard
+      title={CONFIG.LETTERBOXD.title}
+      description={CONFIG.LETTERBOXD.description}
+      href={CONFIG.LETTERBOXD.url}
+    >
+      <LetterboxdLogo slot="logo" class="h-4 w-auto shrink-0 sm:hidden" />
+      <LetterboxdContent server:defer>
+        <LetterboxdFallback slot="fallback" />
+      </LetterboxdContent>
+    </FeedCard>
+    <FeedCard
+      title={CONFIG.HARDCOVER.title}
+      description={CONFIG.HARDCOVER.description}
+      href={CONFIG.HARDCOVER.url}
+    >
+      <HardcoverLogo slot="logo" class="size-8 shrink-0 sm:hidden" />
+      <HardcoverContent server:defer>
+        <HardcoverFallback slot="fallback" />
+      </HardcoverContent>
+    </FeedCard>
+    <FeedCard
+      title={CONFIG.SPOTIFY.title}
+      description={CONFIG.SPOTIFY.description}
+      href={CONFIG.SPOTIFY.url}
+    >
+      <SpotifyLogo slot="logo" class="size-6 shrink-0 sm:hidden" />
+      <SpotifyContent server:defer>
+        <SpotifyFallback slot="fallback" />
+      </SpotifyContent>
+    </FeedCard>
   </div>
 </Layout>
