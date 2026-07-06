@@ -4,9 +4,23 @@ export const CONFIG = {
     DESCRIPTION:
       "Hi, I'm Matteo. Full-stack developer with a passion for building web and native applications.",
   },
-  GITHUB: {
-    username: "matteotagliatti",
-    pinnedLimit: 4,
+  PROJECTS: {
+    githubUsername: "matteotagliatti",
+    githubLimit: 4,
+    static: [
+      {
+        url: "https://www.juztina.ai/",
+        name: "Juztina.ai",
+        description: "AI platform for lawyers",
+        where: "Sevenia",
+      },
+      {
+        url: "https://camminatametabolica.it",
+        name: "Camminata Metabolica",
+        description: "Fitness platform with booking for courses and events",
+        where: "Overclouds",
+      },
+    ],
   },
   SOCIAL_LINKS: [
     { text: "Email", href: "mailto:matteotagliatti@gmail.com" },
