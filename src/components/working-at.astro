@@ -1,0 +1,8 @@
+---
+import { CONFIG } from "../lib/consts";
+import { fetchGitHubCompany } from "../lib/github";
+
+const company = await fetchGitHubCompany(CONFIG.PROJECTS.githubUsername);
+---
+
+{company && <span class="font-medium">{company}</span>}

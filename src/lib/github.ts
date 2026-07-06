@@ -23,6 +23,30 @@ type GraphQLResponse = {
   errors?: { message: string }[];
 };
 
+type GraphQLProfileResponse = {
+  data?: {
+    user: {
+      company: string | null;
+      location: string | null;
+    } | null;
+  };
+  errors?: { message: string }[];
+};
+
+export type GitHubProfile = {
+  company: string | null;
+  location: string | null;
+};
+
+const USER_PROFILE_QUERY = `
+  query UserProfile($login: String!) {
+    user(login: $login) {
+      company
+      location
+    }
+  }
+`;
+
 const PINNED_REPOS_QUERY = `
   query PinnedRepos($login: String!) {
     user(login: $login) {
@@ -92,4 +116,76 @@ export async function fetchPinnedRepos(username: string): Promise<GitHubRepo[]> 
     language: repo.primaryLanguage?.name ?? null,
     html_url: repo.url,
   }));
+}
+
+function formatCompany(company: string | null | undefined): string | null {
+  if (!company) return null;
+  const formatted = company.replace(/^@/, "").trim();
+  return formatted || null;
+}
+
+function formatLocation(location: string | null | undefined): string | null {
+  if (!location) return null;
+  const formatted = location.trim();
+  return formatted || null;
+}
+
+export async function fetchGitHubProfile(username: string): Promise<GitHubProfile> {
+  return fetchGitHubProfileCached(username);
+}
+
+const profileRequests = new Map<string, Promise<GitHubProfile>>();
+
+function fetchGitHubProfileCached(username: string): Promise<GitHubProfile> {
+  const existing = profileRequests.get(username);
+  if (existing) return existing;
+
+  const request = fetchGitHubProfileUncached(username).finally(() => {
+    profileRequests.delete(username);
+  });
+
+  profileRequests.set(username, request);
+  return request;
+}
+
+async function fetchGitHubProfileUncached(username: string): Promise<GitHubProfile> {
+  const response = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: authHeaders(),
+    body: JSON.stringify({
+      query: USER_PROFILE_QUERY,
+      variables: { login: username },
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `GitHub API error for ${username}: ${response.status} ${response.statusText}`,
+    );
+  }
+
+  const data = (await response.json()) as GraphQLProfileResponse;
+
+  if (data.errors?.length) {
+    throw new Error(
+      `GitHub GraphQL error: ${data.errors.map((e) => e.message).join(", ")}`,
+    );
+  }
+
+  const user = data.data?.user;
+
+  return {
+    company: formatCompany(user?.company),
+    location: formatLocation(user?.location),
+  };
+}
+
+export async function fetchGitHubCompany(username: string): Promise<string | null> {
+  const profile = await fetchGitHubProfile(username);
+  return profile.company;
+}
+
+export async function fetchGitHubLocation(username: string): Promise<string | null> {
+  const profile = await fetchGitHubProfile(username);
+  return profile.location;
 }

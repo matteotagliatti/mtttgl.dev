@@ -1,0 +1,8 @@
+---
+import { CONFIG } from "../lib/consts";
+import { fetchGitHubLocation } from "../lib/github";
+
+const location = await fetchGitHubLocation(CONFIG.PROJECTS.githubUsername);
+---
+
+{location && <span class="font-medium">{location}</span>}

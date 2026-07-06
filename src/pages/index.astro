@@ -16,6 +16,10 @@ import SpotifyFallback from "../components/spotify-fallback.astro";
 import LetterboxdLogo from "../components/logos/letterboxd-logo.astro";
 import HardcoverLogo from "../components/logos/hardcover-logo.astro";
 import SpotifyLogo from "../components/logos/spotify-logo.astro";
+import WorkingAt from "../components/working-at.astro";
+import WorkingAtFallback from "../components/working-at-fallback.astro";
+import BasedIn from "../components/based-in.astro";
+import BasedInFallback from "../components/based-in-fallback.astro";
 import { CONFIG } from "../lib/consts";
 
 function social(text: string) {
@@ -34,10 +38,15 @@ function social(text: string) {
       loading="eager"
     />
     <p>
-      Hi, I'm Matteo. <span class="font-medium">Full-stack developer</span> with a
-      passion for building web and native applications with an eye for design. Experienced
-      in <span class="font-medium">TypeScript</span> (React, React Native, Node.js
-      and other frameworks), <span class="font-medium">Go</span> and{" "}
+      Hi, I'm Matteo. <span class="font-medium">Full-stack developer</span>{" "}
+      based in <BasedIn server:defer
+        ><BasedInFallback slot="fallback" /></BasedIn
+      >, currently working at <WorkingAt server:defer
+        ><WorkingAtFallback slot="fallback" /></WorkingAt
+      >. Experienced in <span class="font-medium">TypeScript</span> (React, React
+      Native, Node.js and other frameworks), <span class="font-medium">Go</span> and{
+        " "
+      }
       <span class="font-medium">PHP</span> (Laravel). Simplicity and elegance are
       my guiding principles.
     </p>
