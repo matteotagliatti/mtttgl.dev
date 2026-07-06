@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 interface Props {
   albumArtUrl?: string | null;
   title?: string;
@@ -23,7 +25,7 @@ const { albumArtUrl = null, title = "" } = Astro.props;
   >
     {
       albumArtUrl ? (
-        <img
+        <Image
           src={albumArtUrl}
           alt={title}
           width={56}

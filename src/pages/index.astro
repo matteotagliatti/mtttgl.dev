@@ -1,6 +1,7 @@
 ---
 export const prerender = true;
 
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import ProjectsContent from "../components/projects-content.astro";
 import ProjectsFallback from "../components/projects-fallback.astro";
@@ -24,7 +25,7 @@ function social(text: string) {
 
 <Layout>
   <section class="space-y-4">
-    <img
+    <Image
       src={`https://github.com/${CONFIG.PROJECTS.githubUsername}.png?size=160`}
       alt={CONFIG.SITE.TITLE}
       width={80}

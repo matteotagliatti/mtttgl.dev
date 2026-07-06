@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 interface Props {
   posterUrl?: string | null;
   title?: string;
@@ -28,7 +30,7 @@ const { posterUrl = null, title = "" } = Astro.props;
     >
       {
         posterUrl ? (
-          <img
+          <Image
             src={posterUrl}
             alt={title}
             width={56}
