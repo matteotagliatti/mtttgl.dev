@@ -4,11 +4,8 @@ import { CONFIG } from "../lib/consts";
 
 <div aria-hidden="true">
   {
-    Array.from({ length: CONFIG.PROJECTS.githubLimit }).map((_, index) => (
-      <div class="grid grid-cols-[auto_1fr_2fr_1fr] gap-x-4 border-t border-foreground/10 py-2">
-        <span class="text-muted tabular-nums">
-          {CONFIG.PROJECTS.static.length + index + 1}
-        </span>
+    Array.from({ length: CONFIG.PROJECTS.githubLimit }).map(() => (
+      <div class="grid grid-cols-[1fr_2fr_1fr] gap-x-4 border-t border-foreground/10 py-2">
         <div class="h-5 flex items-center">
           <span class="h-3 w-12 animate-pulse rounded bg-placeholder" />
         </div>
