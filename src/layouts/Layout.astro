@@ -1,8 +1,18 @@
 ---
 import "../styles/global.css";
 import { CONFIG } from "../lib/consts";
+import { cn } from "../lib/utils";
 import { Font } from "astro:assets";
 import Analytics from "@vercel/analytics/astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  className?: string;
+}
+
+const { title, description = CONFIG.SITE.DESCRIPTION, className } = Astro.props;
+const pageTitle = title ? `${title} · ${CONFIG.SITE.TITLE}` : CONFIG.SITE.TITLE;
 ---
 
 <!doctype html>
@@ -13,14 +23,14 @@ import Analytics from "@vercel/analytics/astro";
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
-    <title>{CONFIG.SITE.TITLE}</title>
-    <meta name="description" content={CONFIG.SITE.DESCRIPTION} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
     <Font cssVariable="--font-geist-sans" preload />
   </head>
   <body
     class="font-sans antialiased text-foreground max-w-xl mx-auto px-4 pb-4 pt-8 space-y-8 text-base sm:text-sm"
   >
-    <main class="space-y-12">
+    <main class={cn("space-y-8", className)}>
       <slot />
     </main>
     <footer class="text-sm sm:text-xs text-muted">

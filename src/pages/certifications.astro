@@ -1,0 +1,44 @@
+---
+export const prerender = true;
+
+import Layout from "../layouts/Layout.astro";
+import Back from "../components/back.astro";
+import { getCertifications } from "../lib/certifications";
+
+const certifications = getCertifications();
+---
+
+<Layout
+  title="Certifications"
+  description="Professional certifications and courses."
+  className="space-y-8"
+>
+  <section class="space-y-4">
+    <Back />
+    <h1 class="font-medium">Certifications</h1>
+  </section>
+
+  <section>
+    <div
+      class="grid grid-cols-[1fr_1fr_auto] gap-x-4 pb-2 text-muted text-sm sm:text-xs"
+      aria-hidden="true"
+    >
+      <span>Certification</span>
+      <span>Issuer</span>
+      <span class="text-right">Year</span>
+    </div>
+    {
+      certifications.map((cert) => (
+        <div class="grid grid-cols-[1fr_1fr_auto] gap-x-4 border-t border-foreground/10 py-2">
+          <a href={cert.url} target="_blank" rel="noopener noreferrer">
+            {cert.title}
+          </a>
+          <span class="text-sm sm:text-xs leading-5">{cert.issuer || "—"}</span>
+          <span class="text-right text-sm sm:text-xs leading-5 tabular-nums">
+            {cert.year || "—"}
+          </span>
+        </div>
+      ))
+    }
+  </section>
+</Layout>
