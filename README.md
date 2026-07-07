@@ -1,18 +1,18 @@
 # mtttgl.dev
 
-Personal website and hub for [Matteo Tagliatti](https://mtttgl.dev).
+Personal website for [Matteo Tagliatti](https://mtttgl.dev).
 
 This site auto-updates as much as possible from the services I already use, instead of duplicating the same information in multiple places. Profile details, projects, and activity feeds are pulled in at build or request time from external sources.
 
 ## Data sources
 
-| Section | Source |
-| --- | --- |
-| Location & employer | [GitHub](https://github.com/matteotagliatti) profile |
-| Projects | GitHub pinned repositories + static entries |
-| Movies | [Letterboxd](https://letterboxd.com/mattetgl/) diary |
-| Books | [Hardcover](https://hardcover.app/@mattetgl) shelf |
-| Music | [Spotify](https://open.spotify.com/user/mattetgl) top tracks |
+| Section             | Source                                                       |
+| ------------------- | ------------------------------------------------------------ |
+| Location & employer | [GitHub](https://github.com/matteotagliatti) profile         |
+| Projects            | GitHub pinned repositories + static entries                  |
+| Movies              | [Letterboxd](https://letterboxd.com/mattetgl/) diary         |
+| Books               | [Hardcover](https://hardcover.app/@mattetgl) shelf           |
+| Music               | [Spotify](https://open.spotify.com/user/mattetgl) top tracks |
 
 ## Setup
 
@@ -31,16 +31,6 @@ Required tokens depend on which sections you want live:
 - `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_REFRESH_TOKEN` — Spotify top tracks (`pnpm spotify:auth` to obtain the refresh token)
 
 Set the same variables in your Vercel project settings for production.
-
-## Commands
-
-| Command | Action |
-| --- | --- |
-| `pnpm install` | Install dependencies |
-| `pnpm dev` | Start local dev server at `localhost:4321` |
-| `pnpm build` | Build for production |
-| `pnpm preview` | Preview the production build locally |
-| `pnpm spotify:auth` | Run Spotify OAuth flow to get a refresh token |
 
 ## Stack
 
