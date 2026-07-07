@@ -1,6 +1,6 @@
 ---
 title: OneBag 🎒
-description: Everything I pack for one-bag travel. ❄️ marks winter items.
+description: I use this list as a reference for onebag trips. ❄️ marks winter items.
 date: 2026-07-07
 ---
 
