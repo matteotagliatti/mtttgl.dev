@@ -1,46 +1,49 @@
-# Astro Starter Kit: Basics
+# mtttgl.dev
+
+Personal website and hub for [Matteo Tagliatti](https://mtttgl.dev).
+
+This site auto-updates as much as possible from the services I already use, instead of duplicating the same information in multiple places. Profile details, projects, and activity feeds are pulled in at build or request time from external sources.
+
+## Data sources
+
+| Section | Source |
+| --- | --- |
+| Location & employer | [GitHub](https://github.com/matteotagliatti) profile |
+| Projects | GitHub pinned repositories + static entries |
+| Movies | [Letterboxd](https://letterboxd.com/mattetgl/) diary |
+| Books | [Hardcover](https://hardcover.app/@mattetgl) shelf |
+| Music | [Spotify](https://open.spotify.com/user/mattetgl) top tracks |
+
+## Setup
+
+Copy `.env.example` to `.env` and fill in the API tokens you need:
 
 ```sh
-pnpm create astro@latest -- --template basics
+cp .env.example .env
+pnpm install
+pnpm dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Required tokens depend on which sections you want live:
 
-## 🚀 Project Structure
+- `GITHUB_TOKEN` — GitHub profile and pinned repos
+- `HARDCOVER_TOKEN` — Hardcover bookshelf
+- `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_REFRESH_TOKEN` — Spotify top tracks (`pnpm spotify:auth` to obtain the refresh token)
 
-Inside of your Astro project, you'll see the following folders and files:
+Set the same variables in your Vercel project settings for production.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## Commands
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+| Command | Action |
+| --- | --- |
+| `pnpm install` | Install dependencies |
+| `pnpm dev` | Start local dev server at `localhost:4321` |
+| `pnpm build` | Build for production |
+| `pnpm preview` | Preview the production build locally |
+| `pnpm spotify:auth` | Run Spotify OAuth flow to get a refresh token |
 
-## 🧞 Commands
+## Stack
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [Astro](https://astro.build) with server-side rendering on Vercel
+- [Tailwind CSS](https://tailwindcss.com)
+- [@astrojs/alpinejs](https://docs.astro.build/en/guides/integrations-guide/alpinejs/) for the colophon dialog

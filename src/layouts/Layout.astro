@@ -4,6 +4,7 @@ import { CONFIG } from "../lib/consts";
 import { cn } from "../lib/utils";
 import { Font } from "astro:assets";
 import Analytics from "@vercel/analytics/astro";
+import Colophon from "../components/colophon.astro";
 
 interface Props {
   title?: string;
@@ -34,11 +35,13 @@ const pageTitle = title ? `${title} · ${CONFIG.SITE.TITLE}` : CONFIG.SITE.TITLE
       <slot />
     </main>
     <footer class="text-sm sm:text-xs text-muted">
-      <p class="flex items-center gap-1">
+      <div class="flex flex-wrap items-center gap-1">
         <span>© {new Date().getFullYear()}</span>
         <span>•</span>
         <span>{CONFIG.SITE.TITLE}</span>
-      </p>
+        <span>•</span>
+        <Colophon />
+      </div>
     </footer>
     <Analytics />
   </body>

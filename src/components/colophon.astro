@@ -1,0 +1,53 @@
+<div
+  x-data="{ open: false }"
+  x-on:keydown.escape.window="open = false"
+  class="inline"
+>
+  <button
+    type="button"
+    class="cursor-pointer underline decoration-dotted underline-offset-[3px] hover:decoration-solid"
+    x-on:click="open = true"
+  >
+    Colophon
+  </button>
+
+  <template x-teleport="body">
+    <div
+      x-cloak
+      x-show="open"
+      x-transition.opacity
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="colophon-title"
+      x-on:click.self="open = false"
+    >
+      <div
+        x-show="open"
+        x-transition
+        class="w-full max-w-md space-y-4 rounded-lg bg-card p-6 text-foreground shadow-lg"
+        x-on:click.stop
+      >
+        <h2 id="colophon-title" class="font-medium">About this site</h2>
+        <div class="space-y-3 text-sm sm:text-xs leading-5">
+          <p>
+            This website is my personal hub. It pulls in as much content as
+            possible from the places I already update, so it stays current
+            without me rewriting the same details in several spots.
+          </p>
+          <p>
+            Profile details come from GitHub. Projects, movies, books, and music
+            are synced from GitHub, Letterboxd, Hardcover, and Spotify.
+          </p>
+        </div>
+        <button
+          type="button"
+          class="cursor-pointer text-muted underline decoration-dotted underline-offset-[3px] hover:decoration-solid"
+          x-on:click="open = false"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </template>
+</div>
