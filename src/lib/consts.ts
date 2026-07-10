@@ -6,7 +6,7 @@ export const CONFIG = {
   },
   PROJECTS: {
     githubUsername: "matteotagliatti",
-    githubLimit: 4,
+    githubLimit: 2,
     static: [
       {
         url: "https://www.juztina.ai/",
