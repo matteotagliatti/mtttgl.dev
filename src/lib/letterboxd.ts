@@ -22,10 +22,15 @@ function decodeEntities(value: string): string {
     .replace(/&apos;/g, "'");
 }
 
+// RSS posters are typically 600×900; bump to 1000×1500 for sharper retina display.
+function upgradePosterUrl(url: string): string {
+  return url.replace(/-0-\d+-0-\d+-crop\./, "-0-1000-0-1500-crop.");
+}
+
 function extractPosterUrl(description: string | null): string | null {
   if (!description) return null;
   const match = description.match(/<img src="([^"]+)"/);
-  return match?.[1] ?? null;
+  return match?.[1] ? upgradePosterUrl(match[1]) : null;
 }
 
 function parseItem(block: string): LetterboxdEntry | null {

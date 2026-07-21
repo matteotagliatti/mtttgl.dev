@@ -12,7 +12,7 @@ This site auto-updates as much as possible from the services I already use, inst
 | Projects            | GitHub pinned repositories + static entries                  |
 | Movies              | [Letterboxd](https://letterboxd.com/mattetgl/) diary         |
 | Books               | [Hardcover](https://hardcover.app/@mattetgl) shelf           |
-| Music               | [Spotify](https://open.spotify.com/user/mattetgl) top tracks |
+| Music               | [Spotify](https://open.spotify.com/user/matteotagliatti) top tracks |
 
 ## Setup
 

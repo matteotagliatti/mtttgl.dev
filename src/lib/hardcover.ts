@@ -9,10 +9,17 @@ export type HardcoverData = {
   entries: HardcoverEntry[];
 };
 
+type GraphQLImage = {
+  url: string;
+  width: number | null;
+  height: number | null;
+};
+
 type GraphQLBook = {
   title: string;
   slug: string;
-  image: { url: string } | null;
+  image: GraphQLImage | null;
+  images: GraphQLImage[];
 };
 
 type GraphQLUserBook = {
@@ -43,12 +50,37 @@ const RECENTLY_READ_QUERY = `
           slug
           image {
             url
+            width
+            height
+          }
+          images {
+            url
+            width
+            height
           }
         }
       }
     }
   }
 `;
+
+function imageArea(image: GraphQLImage): number {
+  return (image.width ?? 0) * (image.height ?? 0);
+}
+
+function bestCoverUrl(book: GraphQLBook): string | null {
+  const candidates = book.images.length
+    ? book.images.filter(
+        (image) => (image.height ?? 0) > (image.width ?? 0),
+      )
+    : [];
+  const pool = candidates.length ? candidates : book.images;
+  const best = pool.length
+    ? pool.reduce((a, b) => (imageArea(a) >= imageArea(b) ? a : b))
+    : book.image;
+
+  return best?.url ?? null;
+}
 
 export async function fetchRecentlyRead(limit: number): Promise<HardcoverData> {
   const token = import.meta.env.HARDCOVER_TOKEN;
@@ -93,7 +125,7 @@ export async function fetchRecentlyRead(limit: number): Promise<HardcoverData> {
     .filter((userBook) => userBook.book?.slug)
     .map((userBook) => ({
       title: userBook.book.title,
-      coverUrl: userBook.book.image?.url ?? null,
+      coverUrl: bestCoverUrl(userBook.book),
       link: `https://hardcover.app/books/${userBook.book.slug}`,
     }));
 

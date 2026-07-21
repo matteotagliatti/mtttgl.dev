@@ -45,7 +45,7 @@ export const CONFIG = {
   SPOTIFY: {
     title: "Spotify",
     description: "Top tracks",
-    url: "https://open.spotify.com/user/mattetgl",
+    url: "https://open.spotify.com/user/matteotagliatti",
     limit: 8,
   },
 };

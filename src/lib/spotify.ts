@@ -96,9 +96,9 @@ async function getAccessToken(): Promise<string> {
   return data.access_token;
 }
 
-function smallestImageUrl(images: SpotifyImage[]): string | null {
+function largestImageUrl(images: SpotifyImage[]): string | null {
   if (!images.length) return null;
-  const sorted = [...images].sort((a, b) => a.width - b.width);
+  const sorted = [...images].sort((a, b) => b.width - a.width);
   return sorted[0]?.url ?? null;
 }
 
@@ -135,7 +135,7 @@ export async function fetchTopTracks(limit: number): Promise<SpotifyData> {
   const entries: SpotifyTrack[] = tracksData.items.map((track) => ({
     title: track.name,
     artist: track.artists.map((a) => a.name).join(", "),
-    albumArtUrl: smallestImageUrl(track.album.images),
+    albumArtUrl: largestImageUrl(track.album.images),
     link: track.external_urls.spotify,
   }));
 
