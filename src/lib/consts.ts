@@ -27,7 +27,6 @@ export const CONFIG = {
     { text: "GitHub", href: "https://github.com/matteotagliatti" },
     { text: "LinkedIn", href: "https://www.linkedin.com/in/matteotagliatti/" },
     { text: "Instagram", href: "https://www.instagram.com/matteotagliatti/" },
-    { text: "X", href: "https://x.com/matteotagliatti" },
   ],
   LETTERBOXD: {
     title: "Letterboxd",
